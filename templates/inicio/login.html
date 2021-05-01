@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block body %}
+    <br>
+    <br>
+    <form method="POST">
+        <div class="container" style="height: 80vh;">
+        {% csrf_token %}
+        <form method="POST">
+            {% csrf_token %}
+            <br>
+            {{ form.as_p }}
+            <br>
+                    <p align="center">
+                        <button type="submit" class="btn btn-success">Login</button>
+                    </p>
+                    
+        </form>
+        </div>
+    </form>
+{% endblock body %}
