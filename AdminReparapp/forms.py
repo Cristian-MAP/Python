@@ -13,6 +13,7 @@ class FormularioLogin(AuthenticationForm):
         self.fields['password'].widget.attrs['class'] = 'form-control'
         self.fields['password'].widget.attrs['placeholder'] = 'Contraseña'
 
+
 class AgenteForm(forms.ModelForm):
     agente_id = forms.CharField(label='Cédula', widget=forms.TextInput(
         attrs={
@@ -50,6 +51,7 @@ class TecnicoEspecialistaForm(forms.ModelForm):
         }
     ))
     taller = forms.ModelChoiceField(queryset=Taller.objects.all())
+
     class Meta:
         model = Usuario
         fields = ('nombres', 'apellidos', 'email', 'telefono')
@@ -67,6 +69,7 @@ class TecnicoEspecialistaForm(forms.ModelForm):
         tecnico.save()
         return user
 
+
 class OperadorForm(forms.ModelForm):
     operador_id = forms.CharField(label='Cédula', widget=forms.TextInput(
         attrs={
@@ -76,7 +79,9 @@ class OperadorForm(forms.ModelForm):
             'required': 'required'
         }
     ))
-    callcenter = forms.ModelChoiceField(label= 'Call Center',queryset=CallCenter.objects.all())
+    callcenter = forms.ModelChoiceField(
+        label='Call Center', queryset=CallCenter.objects.all())
+
     class Meta:
         model = Usuario
         fields = ('nombres', 'apellidos', 'email', 'telefono')
@@ -94,17 +99,17 @@ class OperadorForm(forms.ModelForm):
         operador.save()
         return user
 
+
 class EditarForm(forms.ModelForm):
     class Meta:
         model = Usuario
-        fields = 'username','nombres','apellidos','telefono','usuario_activo'
+        fields = 'username', 'nombres', 'apellidos', 'telefono', 'usuario_activo'
+
 
 class AgregarTrabajadorForm(forms.ModelForm):
     class Meta:
         model = Usuario
-        fields = 'username','nombres','apellidos','telefono','usuario_activo','usuario_tecnico','usuario_agente',
-
-
+        fields = 'username', 'nombres', 'apellidos', 'telefono', 'usuario_activo', 'usuario_tecnico', 'usuario_agente',
 
 
 # class AgenteForm(UserCreationForm):
